@@ -1,8 +1,9 @@
-package bank.picpay.dominio.service;
+package bank.picpay.dominio.Usuario.Servicos;
 
-import bank.picpay.dominio.models.usuario.UsuarioEntity;
-import bank.picpay.dominio.models.usuario.cnpjDTO;
-import bank.picpay.dominio.models.usuario.cpfDTO;
+import bank.picpay.dominio.Usuario.Entidades.UsuarioEntity;
+import bank.picpay.dominio.Usuario.Entidades.cnpjDTO;
+import bank.picpay.dominio.Usuario.Entidades.cpfDTO;
+import bank.picpay.dominio.Usuario.Interfaces.IUsuarioService;
 import bank.picpay.infra.repository.UsuarioRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements IUsuarioService {
     private final UsuarioRepository repository;
 
     public UsuarioService(UsuarioRepository repository) {

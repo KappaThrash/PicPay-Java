@@ -1,5 +1,6 @@
-package bank.picpay.dominio.models.usuario;
+package bank.picpay.dominio.Usuario.Entidades;
 
+import bank.picpay.dominio.Usuario.Enums.TipoUsuario;
 import jakarta.persistence.*;
 import lombok.*;
 

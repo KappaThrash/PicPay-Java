@@ -1,9 +1,9 @@
 package bank.picpay.api.controller;
 
-import bank.picpay.dominio.models.usuario.UsuarioEntity;
-import bank.picpay.dominio.models.usuario.cnpjDTO;
-import bank.picpay.dominio.models.usuario.cpfDTO;
-import bank.picpay.dominio.service.UsuarioService;
+import bank.picpay.dominio.Usuario.Entidades.UsuarioEntity;
+import bank.picpay.dominio.Usuario.Entidades.cnpjDTO;
+import bank.picpay.dominio.Usuario.Entidades.cpfDTO;
+import bank.picpay.dominio.Usuario.Servicos.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package bank.picpay.dominio.factories.factories;
 
-import bank.picpay.dominio.models.usuario.TipoUsuario;
-import bank.picpay.dominio.models.usuario.UsuarioEntity;
+import bank.picpay.dominio.Usuario.Enums.TipoUsuario;
+import bank.picpay.dominio.Usuario.Entidades.UsuarioEntity;
 
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
 package bank.picpay.dominio.models.carteira;
 
 import bank.picpay.api.exceptions.custom_exceptions.BusinessException;
-import bank.picpay.dominio.models.usuario.UsuarioEntity;
+import bank.picpay.dominio.Usuario.Entidades.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
