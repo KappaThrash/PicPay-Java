@@ -1,8 +1,9 @@
 package bank.picpay.controller;
 
-import bank.picpay.models.carteira.CarteiraDTO;
-import bank.picpay.models.carteira.CarteiraEntity;
-import bank.picpay.service.CarteiraService;
+import bank.picpay.api.controller.CarteiraController;
+import bank.picpay.dominio.models.carteira.CarteiraDTO;
+import bank.picpay.dominio.models.carteira.CarteiraEntity;
+import bank.picpay.dominio.service.CarteiraService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -15,7 +16,6 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

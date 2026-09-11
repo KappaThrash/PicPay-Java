@@ -1,10 +1,11 @@
 package bank.picpay.controller;
 
-import bank.picpay.factories.UsuarioFactory;
-import bank.picpay.models.usuario.UsuarioEntity;
-import bank.picpay.models.usuario.cnpjDTO;
-import bank.picpay.models.usuario.cpfDTO;
-import bank.picpay.service.UsuarioService;
+import bank.picpay.api.controller.UsuarioController;
+import bank.picpay.dominio.factories.factories.UsuarioFactory;
+import bank.picpay.dominio.models.usuario.UsuarioEntity;
+import bank.picpay.dominio.models.usuario.cnpjDTO;
+import bank.picpay.dominio.models.usuario.cpfDTO;
+import bank.picpay.dominio.service.UsuarioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
