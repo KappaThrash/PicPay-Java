@@ -1,16 +1,16 @@
 package bank.picpay.service;
 
-import bank.picpay.api.auth.auth.AuthorizeApi;
-import bank.picpay.api.exceptions.custom_exceptions.BusinessException;
-import bank.picpay.dominio.models.carteira.CarteiraEntity;
-import bank.picpay.dominio.models.transacao.TransacaoDTO;
-import bank.picpay.dominio.models.transacao.TransacaoEntity;
-import bank.picpay.dominio.Usuario.Enums.TipoUsuario;
-import bank.picpay.dominio.Usuario.Entidades.UsuarioEntity;
-import bank.picpay.dominio.service.TransacaoService;
-import bank.picpay.dominio.notify.NotificationProducer;
-import bank.picpay.infra.repository.CarteiraRepository;
-import bank.picpay.infra.repository.TransacaoRepository;
+import bank.picpay.Api.auth.auth.AuthorizeApi;
+import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Dominio.Carteira.Entidades.CarteiraEntity;
+import bank.picpay.Dominio.Transacao.Dto.TransacaoDTO;
+import bank.picpay.Dominio.Transacao.Entidades.TransacaoEntity;
+import bank.picpay.Dominio.Usuario.Enums.TipoUsuario;
+import bank.picpay.Dominio.Usuario.Entidades.UsuarioEntity;
+import bank.picpay.Dominio.Transacao.Servicos.TransacaoService;
+import bank.picpay.Dominio.notify.NotificationProducer;
+import bank.picpay.Infra.repository.CarteiraRepository;
+import bank.picpay.Infra.repository.TransacaoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,9 +1,9 @@
 package bank.picpay.auth;
 
-import bank.picpay.api.auth.auth.AuthorizeApi;
-import bank.picpay.api.exceptions.custom_exceptions.BusinessException;
-import bank.picpay.dominio.models.responses.auth.AuthorizationResponseDTO;
-import bank.picpay.dominio.models.responses.auth.DataResponseAuth;
+import bank.picpay.Api.auth.auth.AuthorizeApi;
+import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Dominio.models.responses.auth.AuthorizationResponseDTO;
+import bank.picpay.Dominio.models.responses.auth.DataResponseAuth;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

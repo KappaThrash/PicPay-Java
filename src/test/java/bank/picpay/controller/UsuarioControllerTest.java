@@ -1,11 +1,11 @@
 package bank.picpay.controller;
 
-import bank.picpay.api.controller.UsuarioController;
-import bank.picpay.dominio.factories.factories.UsuarioFactory;
-import bank.picpay.dominio.Usuario.Entidades.UsuarioEntity;
-import bank.picpay.dominio.Usuario.Entidades.cnpjDTO;
-import bank.picpay.dominio.Usuario.Entidades.cpfDTO;
-import bank.picpay.dominio.Usuario.Servicos.UsuarioService;
+import bank.picpay.Api.controller.UsuarioController;
+import bank.picpay.Dominio.Usuario.Factories.UsuarioFactory;
+import bank.picpay.Dominio.Usuario.Entidades.UsuarioEntity;
+import bank.picpay.Dominio.Usuario.Dtos.CNPJDto;
+import bank.picpay.Dominio.Usuario.Dtos.CPFDto;
+import bank.picpay.Dominio.Usuario.Servicos.UsuarioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -36,10 +36,10 @@ class UsuarioControllerTest {
     @Test
     void postUsuarioCPF() throws Exception {
         ResponseEntity<UsuarioEntity> usuarioEntity = new ResponseEntity<>( UsuarioFactory.usuarioTipoUSUARIO(), HttpStatus.CREATED);
-        cpfDTO cpfDTO = new cpfDTO(usuarioEntity.getBody().getNome(),usuarioEntity.getBody().getTipo(),
+        CPFDto cpfDTO = new CPFDto(usuarioEntity.getBody().getNome(),usuarioEntity.getBody().getTipo(),
                 usuarioEntity.getBody().getDocumento(),usuarioEntity.getBody().getEmail(),usuarioEntity.getBody().getSenha());
 
-        when(usuarioService.validarUsuario(any(cpfDTO.class)))
+        when(usuarioService.validarUsuario(any(CPFDto.class)))
                 .thenReturn(usuarioEntity);
 
         mockMvc.perform(post("/usuario")
@@ -51,10 +51,10 @@ class UsuarioControllerTest {
     @Test
     void postUsuarioCNPJ() throws Exception{
         ResponseEntity<UsuarioEntity> usuarioEntity = new ResponseEntity<>( UsuarioFactory.usuarioTipoLOJISTA(), HttpStatus.CREATED);
-        cnpjDTO cnpjDTO = new cnpjDTO(usuarioEntity.getBody().getNome(),usuarioEntity.getBody().getTipo(),
+        CNPJDto cnpjDTO = new CNPJDto(usuarioEntity.getBody().getNome(),usuarioEntity.getBody().getTipo(),
                 usuarioEntity.getBody().getDocumento(),usuarioEntity.getBody().getEmail(),usuarioEntity.getBody().getSenha());
 
-        when(usuarioService.validarLojista(any(cnpjDTO.class)))
+        when(usuarioService.validarLojista(any(CNPJDto.class)))
                 .thenReturn(usuarioEntity);
 
         mockMvc.perform(post("/lojista")

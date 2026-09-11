@@ -1,9 +1,9 @@
 package bank.picpay.controller;
 
-import bank.picpay.api.controller.TransacaoController;
-import bank.picpay.dominio.models.transacao.TransacaoDTO;
-import bank.picpay.dominio.models.transacao.TransacaoEntity;
-import bank.picpay.dominio.service.TransacaoService;
+import bank.picpay.Api.controller.TransacaoController;
+import bank.picpay.Dominio.Transacao.Dto.TransacaoDTO;
+import bank.picpay.Dominio.Transacao.Entidades.TransacaoEntity;
+import bank.picpay.Dominio.Transacao.Servicos.TransacaoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;

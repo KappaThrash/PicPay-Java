@@ -1,9 +1,9 @@
 package bank.picpay.controller;
 
-import bank.picpay.api.controller.CarteiraController;
-import bank.picpay.dominio.models.carteira.CarteiraDTO;
-import bank.picpay.dominio.models.carteira.CarteiraEntity;
-import bank.picpay.dominio.service.CarteiraService;
+import bank.picpay.Api.controller.CarteiraController;
+import bank.picpay.Dominio.Carteira.Dtos.CarteiraDTO;
+import bank.picpay.Dominio.Carteira.Entidades.CarteiraEntity;
+import bank.picpay.Dominio.Carteira.Servicos.CarteiraService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
