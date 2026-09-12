@@ -1,4 +1,4 @@
-package bank.picpay.Api.exceptions;
+package bank.picpay.Api.Exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

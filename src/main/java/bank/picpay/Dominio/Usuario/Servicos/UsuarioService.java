@@ -1,36 +1,35 @@
 package bank.picpay.Dominio.Usuario.Servicos;
 
 import bank.picpay.Dominio.Usuario.Entidades.UsuarioEntity;
+import bank.picpay.Dominio.Usuario.Dtos.UsuarioDto;
 import bank.picpay.Dominio.Usuario.Dtos.CNPJDto;
 import bank.picpay.Dominio.Usuario.Dtos.CPFDto;
+import bank.picpay.Dominio.Usuario.Conversores.UsuarioDtoConversor;
 import bank.picpay.Dominio.Usuario.Interfaces.IUsuarioService;
 import bank.picpay.Infra.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 @Service
+@RequiredArgsConstructor
 public class UsuarioService implements IUsuarioService {
     private final UsuarioRepository repository;
 
-    public UsuarioService(UsuarioRepository repository) {
-        this.repository = repository;
+    public ResponseEntity<UsuarioDto> validarUsuario(CPFDto dto){
+        var entity = new UsuarioEntity();
+        entity.mapCPFDTOoEntity(dto);
+        repository.save(entity);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioDtoConversor.Converter(entity));
     }
 
-    public ResponseEntity<UsuarioEntity> validarUsuario(CPFDto dto){
-        var Entity = new UsuarioEntity();
-        Entity.mapCPFDTOoEntity(dto);
+    public ResponseEntity<UsuarioDto> validarLojista(CNPJDto dto){
+        var entity = new UsuarioEntity();
+        entity.mapCPNPJDTOoEntity(dto);
+        repository.save(entity);
 
-        repository.save(Entity);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(Entity);
-    }
-
-    public ResponseEntity<UsuarioEntity> validarLojista(CNPJDto dto){
-        var Entity = new UsuarioEntity();
-        Entity.mapCPNPJDTOoEntity(dto);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(Entity));
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioDtoConversor.Converter(entity));
     }
 }

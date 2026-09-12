@@ -1,4 +1,4 @@
-package bank.picpay.Dominio.models.responses.auth.notification;
+package bank.picpay.Dominio.Notify.Dto;
 
 import java.math.BigDecimal;
 import java.time.Instant;

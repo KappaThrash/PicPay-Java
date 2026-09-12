@@ -1,6 +1,6 @@
 package bank.picpay.Api.auth.auth;
 
-import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
 import bank.picpay.Dominio.models.responses.auth.AuthorizationResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

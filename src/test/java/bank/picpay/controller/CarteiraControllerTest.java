@@ -1,6 +1,6 @@
 package bank.picpay.controller;
 
-import bank.picpay.Api.controller.CarteiraController;
+import bank.picpay.Api.Controller.CarteiraController;
 import bank.picpay.Dominio.Carteira.Dtos.CarteiraDTO;
 import bank.picpay.Dominio.Carteira.Entidades.CarteiraEntity;
 import bank.picpay.Dominio.Carteira.Servicos.CarteiraService;

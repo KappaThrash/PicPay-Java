@@ -4,6 +4,7 @@ import bank.picpay.Dominio.Usuario.Dtos.CNPJDto;
 import bank.picpay.Dominio.Usuario.Dtos.CPFDto;
 import bank.picpay.Dominio.Usuario.Enums.TipoUsuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.UUID;
@@ -16,11 +17,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class UsuarioEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID usuario_id;
 
+    @Size(max = 100)
     String nome;
 
     @Enumerated(EnumType.STRING)
@@ -32,8 +33,8 @@ public class UsuarioEntity {
     @Column(unique = true)
     String email;
 
+    @Size(max = 140)
     String senha;
-
 
     public boolean isLOJISTA(){
         return this.tipo == TipoUsuario.LOJISTA;
@@ -46,7 +47,6 @@ public class UsuarioEntity {
         this.email = dto.getEmail();
         this.senha = dto.getSenha();
     }
-
     public void mapCPNPJDTOoEntity(CNPJDto dto){
         this.nome = dto.getNome();
         this.tipo = TipoUsuario.LOJISTA;

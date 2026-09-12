@@ -1,6 +1,6 @@
 package bank.picpay.controller;
 
-import bank.picpay.Api.controller.TransacaoController;
+import bank.picpay.Api.Controller.TransacaoController;
 import bank.picpay.Dominio.Transacao.Dto.TransacaoDTO;
 import bank.picpay.Dominio.Transacao.Entidades.TransacaoEntity;
 import bank.picpay.Dominio.Transacao.Servicos.TransacaoService;

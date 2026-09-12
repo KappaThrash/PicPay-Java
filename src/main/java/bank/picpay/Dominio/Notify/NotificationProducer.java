@@ -1,6 +1,6 @@
-package bank.picpay.Dominio.notify;
+package bank.picpay.Dominio.Notify;
 
-import bank.picpay.Dominio.models.responses.auth.notification.EmailDTO;
+import bank.picpay.Dominio.Notify.Dto.EmailDTO;
 import bank.picpay.Dominio.Usuario.Entidades.UsuarioEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

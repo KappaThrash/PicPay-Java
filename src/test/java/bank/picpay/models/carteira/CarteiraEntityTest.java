@@ -1,7 +1,7 @@
 package bank.picpay.models.carteira;
 
 import bank.picpay.Dominio.Carteira.Entidades.CarteiraEntity;
-import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

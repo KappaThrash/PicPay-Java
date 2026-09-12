@@ -1,4 +1,4 @@
-package bank.picpay.Api.exceptions.custom_exceptions;
+package bank.picpay.Api.Exceptions.custom_exceptions;
 
 public class BusinessException extends RuntimeException {
     public BusinessException(String message) {

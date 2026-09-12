@@ -1,14 +1,14 @@
 package bank.picpay.service;
 
 import bank.picpay.Api.auth.auth.AuthorizeApi;
-import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
 import bank.picpay.Dominio.Carteira.Entidades.CarteiraEntity;
 import bank.picpay.Dominio.Transacao.Dto.TransacaoDTO;
 import bank.picpay.Dominio.Transacao.Entidades.TransacaoEntity;
 import bank.picpay.Dominio.Usuario.Enums.TipoUsuario;
 import bank.picpay.Dominio.Usuario.Entidades.UsuarioEntity;
 import bank.picpay.Dominio.Transacao.Servicos.TransacaoService;
-import bank.picpay.Dominio.notify.NotificationProducer;
+import bank.picpay.Dominio.Notify.NotificationProducer;
 import bank.picpay.Infra.repository.CarteiraRepository;
 import bank.picpay.Infra.repository.TransacaoRepository;
 import org.junit.jupiter.api.BeforeEach;

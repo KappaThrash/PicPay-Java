@@ -1,7 +1,7 @@
 package bank.picpay.auth;
 
 import bank.picpay.Api.auth.auth.AuthorizeApi;
-import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
 import bank.picpay.Dominio.models.responses.auth.AuthorizationResponseDTO;
 import bank.picpay.Dominio.models.responses.auth.DataResponseAuth;
 import org.junit.jupiter.api.Test;

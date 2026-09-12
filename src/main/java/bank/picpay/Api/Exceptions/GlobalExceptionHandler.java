@@ -1,7 +1,7 @@
-package bank.picpay.Api.exceptions;
+package bank.picpay.Api.Exceptions;
 
-import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
-import bank.picpay.Api.exceptions.custom_exceptions.UserNotFoundException;
+import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Api.Exceptions.custom_exceptions.Template.ExcecaoBase;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -67,13 +67,13 @@ public class GlobalExceptionHandler {
         );
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex, HttpServletRequest request){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+    @ExceptionHandler(ExcecaoBase.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(ExcecaoBase ex, HttpServletRequest request){
+        return ResponseEntity.status(ex.getStatus()).body(
                 new ErrorResponse(
                         OffsetDateTime.now(),
-                        HttpStatus.NOT_FOUND.value(),
-                        "UserNotFoundException",
+                        ex.getStatus().value(),
+                        ex.getClass().getSimpleName(),
                         ex.getMessage(),
                         request.getRequestURI()
                 )

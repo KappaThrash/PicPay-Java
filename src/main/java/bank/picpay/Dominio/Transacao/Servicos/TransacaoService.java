@@ -1,11 +1,11 @@
 package bank.picpay.Dominio.Transacao.Servicos;
 
 import bank.picpay.Api.auth.auth.AuthorizeApi;
-import bank.picpay.Api.exceptions.custom_exceptions.BusinessException;
-import bank.picpay.Api.exceptions.custom_exceptions.CarteiraNotFoundException;
+import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
+import bank.picpay.Api.Exceptions.custom_exceptions.CarteiraNotFoundException;
 import bank.picpay.Dominio.Transacao.Dto.TransacaoDTO;
 import bank.picpay.Dominio.Transacao.Entidades.TransacaoEntity;
-import bank.picpay.Dominio.notify.NotificationProducer;
+import bank.picpay.Dominio.Notify.NotificationProducer;
 import bank.picpay.Infra.repository.CarteiraRepository;
 import bank.picpay.Infra.repository.TransacaoRepository;
 import jakarta.transaction.Transactional;

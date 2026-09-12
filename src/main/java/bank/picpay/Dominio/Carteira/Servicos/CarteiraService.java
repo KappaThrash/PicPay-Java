@@ -1,7 +1,7 @@
 package bank.picpay.Dominio.Carteira.Servicos;
 
-import bank.picpay.Api.exceptions.custom_exceptions.CarteiraNotFoundException;
-import bank.picpay.Api.exceptions.custom_exceptions.UserNotFoundException;
+import bank.picpay.Api.Exceptions.custom_exceptions.CarteiraNotFoundException;
+import bank.picpay.Api.Exceptions.custom_exceptions.UserNotFoundException;
 import bank.picpay.Dominio.Carteira.Dtos.CarteiraDTO;
 import bank.picpay.Dominio.Carteira.Entidades.CarteiraEntity;
 import bank.picpay.Infra.repository.CarteiraRepository;

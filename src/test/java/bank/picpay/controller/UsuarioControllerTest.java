@@ -1,6 +1,6 @@
 package bank.picpay.controller;
 
-import bank.picpay.Api.controller.UsuarioController;
+import bank.picpay.Api.Controller.UsuarioController;
 import bank.picpay.Dominio.Usuario.Factories.UsuarioFactory;
 import bank.picpay.Dominio.Usuario.Entidades.UsuarioEntity;
 import bank.picpay.Dominio.Usuario.Dtos.CNPJDto;
