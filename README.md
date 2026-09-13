@@ -4,8 +4,18 @@ Repo original do desafio: https://github.com/PicPay/picpay-desafio-backend<div a
 ![RabbitMQ](https://img.shields.io/badge/Rabbitmq-FF6600?logo=rabbitmq&logoColor=white) [![JUnit5](https://img.shields.io/badge/JUnit5-C21325?logo=junit5&logoColor=fff)](#) 	[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#)
 
 
- 
-</div>
+
+## DOCUMENTAÇÃO COMPLETA
+
+A documentação detalhada do projeto está disponível na pasta [`docs/`](docs/):
+
+* [ Arquitetura do Sistema](docs/architecture.md): Diagrama Mermaid, fluxo de transação e descrição de camadas.
+* [ Referência da API REST](docs/api-reference.md): Endpoints, payloads JSON, contratos de validação e tratamento de erros.
+* [ Modelo de Banco de Dados](docs/database-schema.md): Diagrama ERD, tabelas (`usuarios`, `carteira`, `transacoes`) e migrações.
+* [ Infraestrutura e Deployment](docs/infrastructure-and-deployment.md): Configuração Docker Compose e automação de deploy na AWS EC2 via Terraform.
+* [ Guia de Testes](docs/testing-guide.md): Estrutura de testes unitários e de integração com JUnit 5 e Mockito.
+
+---
 
 ## DOCKER
 

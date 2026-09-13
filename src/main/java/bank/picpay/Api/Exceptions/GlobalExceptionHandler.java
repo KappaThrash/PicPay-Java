@@ -1,6 +1,5 @@
 package bank.picpay.Api.Exceptions;
 
-import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
 import bank.picpay.Api.Exceptions.custom_exceptions.Template.ExcecaoBase;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -54,21 +53,8 @@ public class GlobalExceptionHandler {
         );
     }
 
-    @ExceptionHandler(BusinessException.class)
-    public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException ex, HttpServletRequest request){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-                new ErrorResponse(
-                        OffsetDateTime.now(),
-                        HttpStatus.BAD_REQUEST.value(),
-                        "BusinessException",
-                        ex.getMessage(),
-                        request.getRequestURI()
-                )
-        );
-    }
-
     @ExceptionHandler(ExcecaoBase.class)
-    public ResponseEntity<ErrorResponse> handleUserNotFoundException(ExcecaoBase ex, HttpServletRequest request){
+    public ResponseEntity<ErrorResponse> handleExcecaoBase(ExcecaoBase ex, HttpServletRequest request){
         return ResponseEntity.status(ex.getStatus()).body(
                 new ErrorResponse(
                         OffsetDateTime.now(),
