@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.br.CPF;
 @Getter
 @Setter
 @AllArgsConstructor
- @NoArgsConstructor
+@NoArgsConstructor
 public class CPFDto {
     @NotBlank
     String nome;

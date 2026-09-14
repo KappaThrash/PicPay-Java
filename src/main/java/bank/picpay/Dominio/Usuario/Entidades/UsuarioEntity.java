@@ -33,7 +33,7 @@ public class UsuarioEntity {
     @Column(unique = true)
     String email;
 
-    @Size(max = 140)
+    @Size(max = 840)
     String senha;
 
     public boolean isLOJISTA(){
@@ -45,13 +45,11 @@ public class UsuarioEntity {
         this.tipo = TipoUsuario.USUARIO;
         this.documento = dto.getCpf();
         this.email = dto.getEmail();
-        this.senha = dto.getSenha();
     }
     public void mapCPNPJDTOoEntity(CNPJDto dto){
         this.nome = dto.getNome();
         this.tipo = TipoUsuario.LOJISTA;
         this.documento = dto.getCnpj();
         this.email = dto.getEmail();
-        this.senha = dto.getSenha();
     }
 }

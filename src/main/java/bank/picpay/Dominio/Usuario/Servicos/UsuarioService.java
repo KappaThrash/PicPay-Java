@@ -8,8 +8,10 @@ import bank.picpay.Dominio.Usuario.Conversores.UsuarioDtoConversor;
 import bank.picpay.Dominio.Usuario.Interfaces.IUsuarioService;
 import bank.picpay.Infra.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,9 +19,16 @@ import org.springframework.stereotype.Service;
 public class UsuarioService implements IUsuarioService {
     private final UsuarioRepository repository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public ResponseEntity<UsuarioDto> validarUsuario(CPFDto dto){
         var entity = new UsuarioEntity();
         entity.mapCPFDTOoEntity(dto);
+
+        var senha = passwordEncoder.encode(dto.getSenha());
+        entity.setSenha(senha);
+
         repository.save(entity);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioDtoConversor.Converter(entity));
