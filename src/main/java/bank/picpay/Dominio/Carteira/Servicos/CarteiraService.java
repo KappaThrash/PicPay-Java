@@ -22,13 +22,13 @@ public class CarteiraService {
     }
 
     public ResponseEntity<CarteiraEntity> criarCarteira(CarteiraDTO dto){
-        var UsuarioEntity = usuarioRepository.findById(dto.getUser_id())
+        var usuarioEntity = usuarioRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new UserNotFoundException("Usuário não encontrado"));
 
-        var Carteira = new CarteiraEntity();
-        Carteira.mapDTOToEntity(UsuarioEntity);
+        var carteira = new CarteiraEntity();
+        carteira.mapDtoToEntity(usuarioEntity);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(carteiraRepository.save(Carteira));
+        return ResponseEntity.status(HttpStatus.CREATED).body(carteiraRepository.save(carteira));
     }
 
     public ResponseEntity<CarteiraEntity> getCarteira(UUID id) {

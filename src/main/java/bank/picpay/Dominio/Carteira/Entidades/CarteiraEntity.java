@@ -2,6 +2,7 @@ package bank.picpay.Dominio.Carteira.Entidades;
 
 import bank.picpay.Api.Exceptions.custom_exceptions.BusinessException;
 import bank.picpay.Dominio.Usuario.Entidades.UsuarioEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,8 @@ public class CarteiraEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private UsuarioEntity user_id;
+    @JsonProperty("user_id")
+    private UsuarioEntity userId;
 
     @Column(nullable = false)
     private BigDecimal balance;
@@ -48,8 +50,8 @@ public class CarteiraEntity {
         return this.balance;
     }
 
-    public void mapDTOToEntity(UsuarioEntity usuarioEntity){
-        this.user_id = usuarioEntity;
+    public void mapDtoToEntity(UsuarioEntity usuarioEntity){
+        this.userId = usuarioEntity;
         this.balance = BigDecimal.ZERO;
     }
 }

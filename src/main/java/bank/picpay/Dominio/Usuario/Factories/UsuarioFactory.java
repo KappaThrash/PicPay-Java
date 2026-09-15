@@ -9,7 +9,7 @@ public class UsuarioFactory {
 
     public static UsuarioEntity usuarioTipoUSUARIO(){
         return UsuarioEntity.builder()
-                .usuario_id(UUID.randomUUID())
+                .usuarioId(UUID.randomUUID())
                 .nome("Daniel R K")
                 .tipo(TipoUsuario.USUARIO)
                 .documento("057.698.825-14")
@@ -19,12 +19,11 @@ public class UsuarioFactory {
 
     public static UsuarioEntity usuarioTipoLOJISTA(){
         return UsuarioEntity.builder()
-                .usuario_id(UUID.randomUUID())
+                .usuarioId(UUID.randomUUID())
                 .nome("João Z P")
                 .tipo(TipoUsuario.LOJISTA)
                 .documento("63.876.897/0001-31")
                 .email("joaozp@gmail.com")
                 .senha("def").build();
     }
-
 }

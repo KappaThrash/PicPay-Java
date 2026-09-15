@@ -33,22 +33,22 @@ public class TransacaoService {
     @Transactional
     public ResponseEntity<TransacaoEntity> actTransacao(TransacaoDTO dto){
 
-        var PayerCarteira = carteiraRepository.findById(dto.getPayer())
+        var payerCarteira = carteiraRepository.findById(dto.getPayer())
                 .orElseThrow(() -> new CarteiraNotFoundException("Carteira do Payer não encontrada"));
 
-        var PayeeCarteira = carteiraRepository.findById(dto.getPayee())
+        var payeeCarteira = carteiraRepository.findById(dto.getPayee())
                 .orElseThrow(() -> new CarteiraNotFoundException("Carteira do Payee não encontrada"));
 
-        var PayerAccount = PayerCarteira.getUser_id();
-        var PayeeAccount = PayeeCarteira.getUser_id();
+        var payerAccount = payerCarteira.getUserId();
+        var payeeAccount = payeeCarteira.getUserId();
 
-        BigDecimal TransactionValue = dto.getAmount();
+        BigDecimal transactionValue = dto.getAmount();
 
-        if(PayerAccount.isLOJISTA()){
+        if(payerAccount.isLojista()){
             throw new BusinessException("Usuarios do tipo LOJISTA não podem efetuar transferencias");
         }
 
-        if(PayerCarteira.getBalance().compareTo(TransactionValue) < 0){
+        if(payerCarteira.getBalance().compareTo(transactionValue) < 0){
             throw new BusinessException("Saldo insuficiente");
         }
 
@@ -56,17 +56,15 @@ public class TransacaoService {
            throw new BusinessException("Não autorizado");
         }
 
-        PayerCarteira.debit(TransactionValue);
-        PayeeCarteira.credit(TransactionValue);
+        payerCarteira.debit(transactionValue);
+        payeeCarteira.credit(transactionValue);
 
+        var savingTransacaoEntity = new TransacaoEntity();
+        savingTransacaoEntity.mapDtoToEntity(dto, payerCarteira, payeeCarteira);
+        transacaoRepository.save(savingTransacaoEntity);
 
-        var SavingTransacaoEntity = new TransacaoEntity();
-        SavingTransacaoEntity.mapDTOToEntity(dto, PayerCarteira, PayeeCarteira);
-        transacaoRepository.save(SavingTransacaoEntity);
+        notificationProducer.postTransactionNotification(payerAccount, payeeAccount, transactionValue, savingTransacaoEntity.getCreatedAt());
 
-        notificationProducer.postTransactionNotification(PayerAccount, PayeeAccount, TransactionValue, SavingTransacaoEntity.getCreated_at());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(SavingTransacaoEntity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savingTransacaoEntity);
     }
-
 }

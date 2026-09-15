@@ -24,21 +24,25 @@ public class UsuarioService implements IUsuarioService {
 
     public ResponseEntity<UsuarioDto> validarUsuario(CPFDto dto){
         var entity = new UsuarioEntity();
-        entity.mapCPFDTOoEntity(dto);
+        entity.mapCpfDtoToEntity(dto);
 
         var senha = passwordEncoder.encode(dto.getSenha());
         entity.setSenha(senha);
 
         repository.save(entity);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioDtoConversor.Converter(entity));
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioDtoConversor.converter(entity));
     }
 
     public ResponseEntity<UsuarioDto> validarLojista(CNPJDto dto){
         var entity = new UsuarioEntity();
-        entity.mapCPNPJDTOoEntity(dto);
+        entity.mapCnpjDtoToEntity(dto);
+
+        var senha = passwordEncoder.encode(dto.getSenha());
+        entity.setSenha(senha);
+
         repository.save(entity);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioDtoConversor.Converter(entity));
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioDtoConversor.converter(entity));
     }
 }

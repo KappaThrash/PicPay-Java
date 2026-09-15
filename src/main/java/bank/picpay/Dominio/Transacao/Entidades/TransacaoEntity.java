@@ -1,8 +1,8 @@
 package bank.picpay.Dominio.Transacao.Entidades;
 
-
 import bank.picpay.Dominio.Carteira.Entidades.CarteiraEntity;
 import bank.picpay.Dominio.Transacao.Dto.TransacaoDTO;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,9 +23,9 @@ public class TransacaoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    UUID id;
+    private UUID id;
 
-    BigDecimal amount;
+    private BigDecimal amount;
 
     @ManyToOne
     @JoinColumn(name = "payer_id")
@@ -35,13 +35,14 @@ public class TransacaoEntity {
     @JoinColumn(name = "payee_id")
     private CarteiraEntity payee;
 
-    private Instant created_at;
+    @Column(name = "created_at")
+    @JsonProperty("created_at")
+    private Instant createdAt;
 
-
-    public void mapDTOToEntity(TransacaoDTO dto, CarteiraEntity payer, CarteiraEntity payee){
+    public void mapDtoToEntity(TransacaoDTO dto, CarteiraEntity payer, CarteiraEntity payee){
         this.amount = dto.getAmount();
         this.payer = payer;
         this.payee = payee;
-        this.created_at = Instant.now();
+        this.createdAt = Instant.now();
     }
 }

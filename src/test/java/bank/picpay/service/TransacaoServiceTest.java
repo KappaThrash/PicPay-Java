@@ -45,39 +45,39 @@ class TransacaoServiceTest {
     TransacaoService transacaoService;
 
     TransacaoDTO dto;
-    UsuarioEntity PayerAccount;
-    CarteiraEntity PayerCarteira;
-    UsuarioEntity PayeeAccount;
-    CarteiraEntity PayeeCarteira;
+    UsuarioEntity payerAccount;
+    CarteiraEntity payerCarteira;
+    UsuarioEntity payeeAccount;
+    CarteiraEntity payeeCarteira;
     TransacaoEntity transacaoEntity;
 
     @BeforeEach
     void setup(){
 
-        PayerAccount = new UsuarioEntity(UUID.randomUUID(), "a", TipoUsuario.USUARIO, "84.132.415/0001-09",
+        payerAccount = new UsuarioEntity(UUID.randomUUID(), "a", TipoUsuario.USUARIO, "84.132.415/0001-09",
                 "daniel@gmail.com","abc");
-        PayerCarteira = new CarteiraEntity(UUID.randomUUID(),PayerAccount, new BigDecimal(1000));
+        payerCarteira = new CarteiraEntity(UUID.randomUUID(), payerAccount, new BigDecimal(1000));
 
-        PayeeAccount = new UsuarioEntity(UUID.randomUUID(), "ab", TipoUsuario.LOJISTA, "850.987.415-80",
+        payeeAccount = new UsuarioEntity(UUID.randomUUID(), "ab", TipoUsuario.LOJISTA, "850.987.415-80",
                 "danielq@gmail.com","abc");
-        PayeeCarteira = new CarteiraEntity(UUID.randomUUID(),PayeeAccount, new BigDecimal(1000));
+        payeeCarteira = new CarteiraEntity(UUID.randomUUID(), payeeAccount, new BigDecimal(1000));
 
-        dto = new TransacaoDTO(new BigDecimal(10),PayerCarteira.getId(),PayeeCarteira.getId());
+        dto = new TransacaoDTO(new BigDecimal(10), payerCarteira.getId(), payeeCarteira.getId());
 
-        transacaoEntity = new TransacaoEntity(UUID.randomUUID(),dto.getAmount(), PayerCarteira, PayeeCarteira, Instant.now());
+        transacaoEntity = new TransacaoEntity(UUID.randomUUID(), dto.getAmount(), payerCarteira, payeeCarteira, Instant.now());
     }
 
 
     @Test
     void actTransacaoShouldThrowBusinessExceptionLojistaBecausePayerAccountIsTipoLojista() {
 
-        PayerAccount.setTipo(TipoUsuario.LOJISTA);
+        payerAccount.setTipo(TipoUsuario.LOJISTA);
 
         when(carteiraRepository.findById(dto.getPayer()))
-                .thenReturn(Optional.of(PayerCarteira));
+                .thenReturn(Optional.of(payerCarteira));
 
         when(carteiraRepository.findById(dto.getPayee()))
-                .thenReturn(Optional.of(PayeeCarteira));
+                .thenReturn(Optional.of(payeeCarteira));
 
         assertThrows(BusinessException.class, () -> transacaoService.actTransacao(dto));
     }
@@ -85,13 +85,13 @@ class TransacaoServiceTest {
     @Test
     void actTransacaoShouldThrowBusinessExceptionLojistaBecausePayerBalanceIsNotEnough() {
 
-        PayerCarteira.setBalance(BigDecimal.ONE);
+        payerCarteira.setBalance(BigDecimal.ONE);
 
         when(carteiraRepository.findById(dto.getPayer()))
-                .thenReturn(Optional.of(PayerCarteira));
+                .thenReturn(Optional.of(payerCarteira));
 
         when(carteiraRepository.findById(dto.getPayee()))
-                .thenReturn(Optional.of(PayeeCarteira));
+                .thenReturn(Optional.of(payeeCarteira));
 
         assertThrows(BusinessException.class, () -> transacaoService.actTransacao(dto));
     }
@@ -100,10 +100,10 @@ class TransacaoServiceTest {
     void actTransacaoSuccess() {
 
         when(carteiraRepository.findById(dto.getPayer()))
-                .thenReturn(Optional.of(PayerCarteira));
+                .thenReturn(Optional.of(payerCarteira));
 
         when(carteiraRepository.findById(dto.getPayee()))
-                .thenReturn(Optional.of(PayeeCarteira));
+                .thenReturn(Optional.of(payeeCarteira));
 
         when(authorizeApi.getAuth()).thenReturn(true);
 
